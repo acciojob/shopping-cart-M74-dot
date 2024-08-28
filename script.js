@@ -5,7 +5,7 @@ const priceInput = document.querySelector('#item-price-input');
 const cartItems = document.querySelector('#cart_items');
 const total = document.querySelector('#total');
 let gransTotal =0;
-addButton.innerHTML = "Add";
+addButton.innerText = "Add";
 addButton.addEventListener('click',function(){
 	const itemName = nameInput.value.trim();
 	const itemPrice = parseFloat(priceInput.value.trim());
