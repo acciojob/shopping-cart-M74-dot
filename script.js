@@ -1,55 +1,45 @@
+document.getElementById('add').addEventListener('click', function() {
+    const itemName = document.getElementById('item-name-input').value;
+    const itemQty = parseInt(document.getElementById('item-qty-input').value);
+    const itemPrice = parseInt(document.getElementById('item-price-input').value);
 
-        // Get the necessary elements
-        const addButton = document.getElementById('add');
-        const itemNameInput = document.getElementById('item-name-input');
-        const itemQtyInput = document.getElementById('item-qty-input');
-        const itemPriceInput = document.getElementById('item-price-input');
-        const cartItems = document.getElementById('cart-items');
-        const totalElement = document.getElementById('total');
+    if (itemName && itemQty > 0 && itemPrice > 0) {
+        const totalPerItem = itemQty * itemPrice;
 
-        // Initialize grand total
-        let grandTotal = 0;
+        const table = document.getElementById('cart-items');
+        const row = document.createElement('tr');
 
-        // Add event listener for the "Add" button
-        addButton.addEventListener('click', function() {
-            const itemName = itemNameInput.value.trim();
-            const itemQty = parseInt(itemQtyInput.value.trim(), 10);
-            const itemPrice = parseInt(itemPriceInput.value.trim());
+        // Create columns for item, quantity, price, and total
+        const itemCol = document.createElement('td');
+        itemCol.textContent = itemName;
 
-            // Validate input
-            if (itemName === '' || isNaN(itemQty) || itemQty <= 0 || isNaN(itemPrice) || itemPrice <= 0) {
-                alert('Please enter a valid item name, quantity, and price.');
-                return;
-            }
+        const qtyCol = document.createElement('td');
+        qtyCol.textContent = itemQty;
 
-            // Calculate total price for the item (quantity * price)
-            const totalItemPrice = itemQty * itemPrice;
+        const priceCol = document.createElement('td');
+        priceCol.textContent = itemPrice;
 
-            // Create a new row
-            const newRow = document.createElement('tr');
+        const totalCol = document.createElement('td');
+        totalCol.textContent = totalPerItem; // New column for total
 
-            // Create and append cells to the row
-            const nameCell = document.createElement('td');
-            nameCell.textContent = itemName;
-            newRow.appendChild(nameCell);
+        row.appendChild(itemCol);
+        row.appendChild(qtyCol);
+        row.appendChild(priceCol);
+        row.appendChild(totalCol);
+        
+        // Insert row before the last row (which displays the grand total)
+        table.insertBefore(row, table.lastElementChild);
 
-            const qtyCell = document.createElement('td');
-            qtyCell.textContent = itemQty;
-            newRow.appendChild(qtyCell);
+        // Update grand total
+        const currentTotal = parseFloat(document.getElementById('total').textContent);
+        const newTotal = currentTotal + totalPerItem;
+        document.getElementById('total').textContent = newTotal;
 
-            const priceCell = document.createElement('td');
-            priceCell.textContent = itemPrice;
-            newRow.appendChild(priceCell);
-
-            // Append the new row to the table
-            cartItems.insertBefore(newRow, cartItems.lastElementChild);
-
-            // Update the grand total
-            grandTotal += totalItemPrice;
-            totalElement.innerText = grandTotal;
-
-            // Clear the input fields
-            itemNameInput.value = '';
-            itemQtyInput.value = '';
-            itemPriceInput.value = '';
-        });
+        // Clear input fields
+        document.getElementById('item-name-input').value = '';
+        document.getElementById('item-qty-input').value = '';
+        document.getElementById('item-price-input').value = '';
+    } else {
+        alert('Please enter valid item details.');
+    }
+});
