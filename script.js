@@ -14,7 +14,7 @@
         addButton.addEventListener('click', function() {
             const itemName = itemNameInput.value.trim();
             const itemQty = parseInt(itemQtyInput.value.trim(), 10);
-            const itemPrice = parseFloat(itemPriceInput.value.trim());
+            const itemPrice = parseInt(itemPriceInput.value.trim());
 
             // Validate input
             if (itemName === '' || isNaN(itemQty) || itemQty <= 0 || isNaN(itemPrice) || itemPrice <= 0) {
@@ -38,7 +38,7 @@
             newRow.appendChild(qtyCell);
 
             const priceCell = document.createElement('td');
-            priceCell.textContent = totalItemPrice;
+            priceCell.textContent = itemPrice;
             newRow.appendChild(priceCell);
 
             // Append the new row to the table
@@ -46,7 +46,7 @@
 
             // Update the grand total
             grandTotal += totalItemPrice;
-            totalElement.innerText = parseInt(grandTotal);
+            totalElement.innerText = grandTotal;
 
             // Clear the input fields
             itemNameInput.value = '';
