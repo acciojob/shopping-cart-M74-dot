@@ -8,26 +8,29 @@
 
 <body>
 	<!-- the entire body must be written by student -->
-	<form>
-		<input type="text" id="item-name-input" placeholder="Name" required><br><br>
-		<input type="number" id="item-qty-input" placeholder="Quantity" required><br><br>
-		<input type="number" id="item-price-input" placeholder="Price" required><br><br>
-		<button id="add"></button>
-	</form>
+	 <h1>Shopping Cart</h1>
 
-	<table aria-role="table">
-		<thead>
-			<tr>
-				<th id="item">Item Name</th>
-				<th id="price">Price</th>
-			</tr>
-		</thead>
-		<tbody id="cart_items">
-			<tr>
-				<td colspan="2">Grand Total: $<span id="total">0</span></td>
-			</tr>
-		</tbody>
-	</table>
+    <!-- Input Fields -->
+    <input type="text" id="item-name-input" placeholder="Item Name" required>
+    <input type="number" id="item-qty-input" placeholder="Quantity" required>
+    <input type="number" id="item-price-input" placeholder="Price" required>
+    <button id="add">Add</button>
+    
+    <!-- Table for Cart Items -->
+    <table aria-role="table">
+        <thead>
+            <tr>
+                <th id="item">Item Name</th>
+                <th id="qty">Quantity</th>
+                <th id="price">Price</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items">
+            <tr>
+                <td colspan="3">Grand Total: $<span id="total">0</span></td>
+            </tr>
+        </tbody>
+    </table>
     <script type="text/javascript" src="./script.js">
 </script>
 
