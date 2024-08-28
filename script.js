@@ -1,7 +1,7 @@
 //your code here
 const addButton = document.querySelector('#add');
-const nameInput = document.querySelector('#name_input');
-const priceInput = document.querySelector('#price_input');
+const nameInput = document.querySelector('#item-name-input');
+const priceInput = document.querySelector('#item-price-input');
 const cartItems = document.querySelector('#cart_items');
 const total = document.querySelector('#total');
 let gransTotal =0;
