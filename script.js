@@ -38,7 +38,7 @@
             newRow.appendChild(qtyCell);
 
             const priceCell = document.createElement('td');
-            priceCell.textContent = `$${totalItemPrice.toFixed(2)}`;
+            priceCell.textContent = totalItemPrice;
             newRow.appendChild(priceCell);
 
             // Append the new row to the table
