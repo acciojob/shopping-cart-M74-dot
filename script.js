@@ -1,42 +1,44 @@
-//your code here
-const addButton = document.querySelector('#add');
-const nameInput = document.querySelector('#item-name-input');
-const priceInput = document.querySelector('#item-price-input');
-const cartItems = document.querySelector('#cart_items');
-const total = document.querySelector('#total');
-let gransTotal =0;
-addButton.innerText = "Add";
-addButton.addEventListener('click',function(){
-	const itemName = nameInput.value.trim();
-	const itemPrice = parseFloat(priceInput.value.trim());
+// Get the necessary elements
+const addButton = document.getElementById('add');
+const itemNameInput = document.getElementById('item-name-input');
+const itemPriceInput = document.getElementById('item-price-input');
+const cartItems = document.getElementById('cart-items');
+const totalElement = document.getElementById('total');
 
-	if(itemName === '' || isNaN(itemPrice) || itemPrice <= 0 ){
-		alert('Please enter a valid item name and price.');
-		return;
-	}
+// Initialize grand total
+let grandTotal = 0;
 
-	const newRow = document.createElement('tr');
-	newRow.innerHTML = `<td>${itemName}</td><td>$${itemPrice.toFixed(2)}</td>`;
-	cartItems.insertBefor(newRow,cartItems.lastElementChild);
+// Add event listener for the "Add" button
+addButton.addEventListener('click', function() {
+    const itemName = itemNameInput.value.trim();
+    const itemPrice = parseFloat(itemPriceInput.value.trim());
 
-	gransTotal+=itemPrice;
-	total.innerText = gransTotal.toFixed(2);
+    // Validate input
+    if (itemName === '' || isNaN(itemPrice) || itemPrice <= 0) {
+        alert('Please enter a valid item name and price.');
+        return;
+    }
 
-	nameInput.value='';
-	priceInput.value='';
+    // Create a new row
+    const newRow = document.createElement('tr');
+
+    // Create and append cells to the row
+    const nameCell = document.createElement('td');
+    nameCell.textContent = itemName;
+    newRow.appendChild(nameCell);
+
+    const priceCell = document.createElement('td');
+    priceCell.textContent = `$${itemPrice.toFixed(2)}`;
+    newRow.appendChild(priceCell);
+
+    // Append the new row to the table
+    cartItems.appendChild(newRow);
+
+    // Update the grand total
+    grandTotal += itemPrice;
+    totalElement.innerText = grandTotal.toFixed(2);
+
+    // Clear the input fields
+    itemNameInput.value = '';
+    itemPriceInput.value = '';
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
