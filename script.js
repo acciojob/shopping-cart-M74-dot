@@ -46,7 +46,7 @@
 
             // Update the grand total
             grandTotal += totalItemPrice;
-            totalElement.innerText = grandTotal.toFixed(2);
+            totalElement.innerText = parseInt(grandTotal);
 
             // Clear the input fields
             itemNameInput.value = '';
